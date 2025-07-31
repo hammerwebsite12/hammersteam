@@ -19,7 +19,7 @@
       display:flex; justify-content:center; align-items:center;
       pointer-events: none;
       will-change:transform;
-      transition: filter .7s;
+      transition: filter .7s, transform 1.3s cubic-bezier(.7,0,.2,1);
     }
     .hero-vid {
       object-fit:cover; border-radius:2vw; box-shadow:0 6px 36px #0008;
@@ -37,28 +37,13 @@
       color:#fff;
     }
     .hero-overlay {top:21vh; font-size:2.3rem;}
-    .hero-ad-bottom {
-      bottom:9vh;
-      color:#ffae1a;
-      font-size:1.38rem;
-      opacity:0;
-    }
+    .hero-ad-bottom {bottom:9vh; color:#ffae1a; font-size:1.38rem; opacity:0;}
 
     /* ZOOM/SCROLL states */
-    .scrolled-hero .triple-vid-bg {
-      transform: scale(1.00) translateY(0);
-      filter: blur(0);
-    }
-    .zoom-hero .triple-vid-bg {
-      transform: scale(2.3) translateY(0); /* <-- MAX zoom */
-      filter: blur(0);
-    }
-    .zoom-hero .hero-vid {
-      opacity:.08; box-shadow:0 0 0 transparent;
-    }
-    .zoom-hero .center-vid {
-      opacity:1; box-shadow:0 12px 44px #000c;
-    }
+    .scrolled-hero .triple-vid-bg { transform: scale(1.00) translateY(0);}
+    .zoom-hero .triple-vid-bg { transform: scale(2.3) translateY(0);}
+    .zoom-hero .hero-vid { opacity:.08; box-shadow:0 0 0 transparent;}
+    .zoom-hero .center-vid { opacity:1; box-shadow:0 12px 44px #000c;}
     .zoom-hero .hero-overlay {opacity:1;}
     .zoom-hero .hero-ad-bottom {opacity:0;}
     .scrolled-hero .hero-overlay {opacity:0;}
@@ -76,7 +61,7 @@
       .hero-ad-bottom {font-size:.97rem;}
     }
 
-    /* Main page content frame */
+    /* Main page */
     .main {max-width:700px; margin:0 auto 32px auto; padding:46px 18px 14px 18px; background:#23242bdd; border-radius:14px; box-shadow:0 4px 24px #0007; position:relative; z-index:2; margin-top:110vh;}
     h1 { font-size: 2.1rem; margin-bottom: 10px; color: #ffae1a; font-weight: bold; text-shadow: 0 2px 6px #0005;}
     h2 { font-size: 1.25rem; color: #f05e16; margin: 16px 0 12px 0; }
@@ -88,17 +73,22 @@
     .price { font-size: 1.06rem; color: #ffd15c; margin-top: 8px; }
     .video-wrap { margin: 25px auto 16px auto; max-width: 560px; width: 100%; border-radius: 10px; overflow: hidden; box-shadow: 0 1.5px 10px #000a; background: #23242bdd; aspect-ratio: 16/9; position: relative;}
     .video-wrap iframe { width: 100%; height: 100%; border: none; display: block;}
-    /* FAQ, Pros, Cons, Glide from your supplied code left unchanged ... */
-    .faq-section {
-      max-width: 600px; margin: 40px auto 0 auto; border-radius:12px; background: #212227ee;
-      box-shadow: 0 2px 16px #0005; padding: 20px 15px; 
-    }
+
+    /* FAQ + Pros/Cons styles: collapsible */
+    .faq-section { max-width: 600px; margin: 40px auto 0 auto; border-radius:12px; background: #212227ee; box-shadow: 0 2px 16px #0005; padding: 20px 15px; }
     .faq-title { color: #ffaa44; font-size: 1.14rem; margin:0 0 14px 0; padding-left:8px;}
     .faq-list { }
     .faq-item { margin-bottom:12px;}
-    .faq-q { width: 100%; text-align:left; background: #26282f; color: #ffe0a0; font-size: 1.07rem; border:none; outline:none; padding:12px; border-radius:8px; cursor:pointer; font-weight: 500; letter-spacing:0.1px; transition: background 0.16s; box-shadow: 0 0.5px 2px #0003;}
+    .faq-q {
+      width: 100%; text-align:left; background: #26282f; color: #ffe0a0; font-size: 1.07rem; border:none; outline:none; padding:12px; border-radius:8px; cursor:pointer; font-weight: 500; letter-spacing:0.1px; transition: background 0.16s; box-shadow: 0 0.5px 2px #0003;
+    }
     .faq-q:hover { background: #343750;}
-    .faq-a { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.44s cubic-bezier(.5,1.4,.7,1.01), opacity 0.27s linear; background: #272831e5; color:#eae5d8; border-radius: 0 0 9px 9px; margin-top:0; padding:0 18px; box-shadow: 0 1.5px 6px #0002 inset; transform: translateY(-8px);}
+    .faq-a {
+      max-height: 0; overflow: hidden; opacity: 0;
+      transition: max-height 0.44s cubic-bezier(.5,1.4,.7,1.01), opacity 0.27s linear;
+      background: #272831e5; color:#eae5d8; border-radius: 0 0 9px 9px;
+      margin-top:0; padding:0 18px; box-shadow: 0 1.5px 6px #0002 inset; transform: translateY(-8px);
+    }
     .faq-item.show .faq-a { max-height: 350px; opacity: 1; margin-top:4px; padding:14px 18px 14px 18px; transform: none;}
     .pros { color:#baffca; font-size:1rem;}
     .cons { color:#ff9c9c; font-size:1rem;}
@@ -112,7 +102,7 @@
   </style>
 </head>
 <body>
-  <!-- TRIPLE HERO VIDEO: -->
+  <!-- TRIPLE HERO VIDEO -->
   <div id="triple-hero-bg" class="zoom-hero">
     <div class="triple-vid-bg" id="tripleVidBg">
       <video class="hero-vid left-vid" src="bg1.mp4" autoplay muted loop playsinline></video>
@@ -122,7 +112,7 @@
     <div class="hero-overlay" id="mainAd">Hammer Steam Library Adder<br><span style="font-size:1.3rem;font-weight:400;">Unlock and unleash your Steam</span></div>
     <div class="hero-ad-bottom" id="lowerAd">Massive <b>75,000 games</b> and titles in your arsenal</div>
   </div>
-  <!-- EVERYTHING ELSE: -->
+  <!-- MAIN CONTENT -->
   <div class="main">
     <h1>🚀🔥 Hammer App</h1>
     <h2>Unlock Your Entire Steam Library in One Click!</h2>
@@ -145,20 +135,71 @@
     </div>
     <div class="video-wrap"><iframe src="https://streamable.com/e/i3nad1" allowfullscreen></iframe></div>
   </div>
-  <!-- FAQ/pros/cons and gliders as before ... -->
-  <div class="faq-section"><!-- ... inner content unchanged ... --></div>
-  <div class="faq-section" style="margin-top:36px;"><!-- ... --></div>
+  <!-- FAQ Section - COLLAPSIBLE -->
+  <div class="faq-section">
+    <h2 class="faq-title">❓ Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q">Is Hammer App safe and legal?</button>
+        <div class="faq-a">Absolutely! Hammer downloads directly from Valve’s servers using your Steam credentials. There’s no piracy, no server spoofing, and your login info never goes to us!</div>
+      </div>
+      <div class="faq-item"><button class="faq-q">Will my Steam achievements and saves work?</button>
+        <div class="faq-a">Yes—Hammer fully supports Steam Cloud and achievements. Everything stays synced and up-to-date.</div>
+      </div>
+      <div class="faq-item"><button class="faq-q">Can I use Hammer App anywhere?</button>
+        <div class="faq-a">Yes, there are no region locks! Play and restore games worldwide.</div>
+      </div>
+      <div class="faq-item"><button class="faq-q">What platforms are supported?</button>
+        <div class="faq-a">Hammer runs on Windows, Steam Deck, ROG Ally, MSI Claw, Legion Go, and more. There’s also an Android companion app.</div>
+      </div>
+      <div class="faq-item"><button class="faq-q">Do I need a subscription?</button>
+        <div class="faq-a">No subscription needed! Just a one-time payment of PHP 699 or \$13.</div>
+      </div>
+      <div class="faq-item"><button class="faq-q">Can I add games while on mobile?</button>
+        <div class="faq-a">Yes! The Android app lets you add games on the go, and the upcoming Chrome extension will let you add games in 1 click from the Steam store.</div>
+      </div>
+    </div>
+  </div>
+  <!-- Pros and Cons Section - COLLAPSIBLE -->
+  <div class="faq-section" style="margin-top:36px;">
+    <h2 class="faq-title">✨ Pros & Cons</h2>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q">Show Pros</button>
+        <div class="faq-a">
+          <ul class="pros">
+            <li>✔️ Huge library (75,000+ games, including delisted gems)</li>
+            <li>✔️ No region locks, play anywhere</li>
+            <li>✔️ Fast downloads via Valve's servers</li>
+            <li>✔️ Always up to date with 1 click</li>
+            <li>✔️ Steam Cloud support (saves & achievements stay intact)</li>
+            <li>✔️ Revives classics and lost titles</li>
+            <li>✔️ Multi-platform (Windows, Steam Deck, ROG Ally, etc.)</li>
+            <li>✔️ Mobile companion app + upcoming Chrome extension</li>
+            <li>✔️ Easy, no account needed</li>
+            <li>✔️ One-time price, no subscriptions</li>
+          </ul>
+        </div>
+      </div>
+      <div class="faq-item"><button class="faq-q">Show Cons</button>
+        <div class="faq-a">
+          <ul class="cons">
+            <li>❌ Windows/Linux required for main app</li>
+            <li>❌ No Mac/iOS version (yet)</li>
+            <li>❌ You need your own Steam account with licenses</li>
+            <li>❌ Some DRM-protected games may have extra steps to restore</li>
+            <li>❌ Delisted games availability depends on your Steam ownership</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Gliding Gallery (unchanged from your original) -->
   <div class="glide-row"><div class="glide-track" id="track1"><img src="1st.jpg" class="glide-img" alt="Collage"><img src="1st.jpg" class="glide-img" alt="Collage"></div></div>
   <div class="glide-row"><div class="glide-track" id="track2"><img src="2nd.jpg" class="glide-img" alt="Strip"><img src="2nd.jpg" class="glide-img" alt="Strip"></div></div>
   <div class="glide-row"><div class="glide-track" id="track3"><img src="2025-07-31 13_27_07-GeForce NOW _ The Next Generation in Cloud Gaming _ NVIDIA.png" class="glide-img" alt="Promo"><img src="2025-07-31 13_27_07-GeForce NOW _ The Next Generation in Cloud Gaming _ NVIDIA.png" class="glide-img" alt="Promo"></div></div>
+
   <script>
-    // --- Triple video random: left/center/right randomly assigned ---
-    const BG_VIDS = [
-      "bg1.mp4",
-      "bg2.mp4",
-      "bg3.mp4"
-    ];
-    // Shuffle for randomness!
+    // Triple video random: left/center/right randomly assigned
+    const BG_VIDS = [ "bg1.mp4", "bg2.mp4", "bg3.mp4" ];
     function shuffle(arr){ for(let i=arr.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]; } }
     shuffle(BG_VIDS);
     const vids = document.querySelectorAll('.hero-vid');
@@ -166,26 +207,22 @@
     vids[1].src = BG_VIDS[1];
     vids[2].src = BG_VIDS[2];
 
-    // --- ZOOM & SCROLL ANIMATION ---
+    // ZOOM & SCROLL ANIMATION
     let zoomedIn = true, lastY = 0;
     const hero = document.getElementById('triple-hero-bg');
     function heroZoom(){
-      // Zoom is maxed at Y = 0 (full one video), min at ~vh/2 (all three shown)
       let y = window.scrollY;
-      let limit = window.innerHeight/1.2; // Feel free to adjust smoothness
-      // Blend zoom state class from max to min
+      let limit = window.innerHeight/1.2; // Adjust for smoothness
       if(y < limit/2){
         if(!zoomedIn){ hero.classList.add('zoom-hero'); hero.classList.remove('scrolled-hero'); zoomedIn=true;}
       }else{
         if(zoomedIn){ hero.classList.remove('zoom-hero'); hero.classList.add('scrolled-hero'); zoomedIn=false;}
       }
-      // If you want truly smooth zoom use CSS transform instead of class, or add more in-between classes
     }
-    // Initial zoom class!
     hero.classList.add('zoom-hero');
     window.addEventListener('scroll', heroZoom);
 
-    // FAQ accordion logic:
+    // Collapsible FAQ/Pros&Cons logic with elegant transition
     document.querySelectorAll('.faq-q').forEach(btn => {
       btn.addEventListener('click', function() {
         const item = this.parentElement;
@@ -195,8 +232,7 @@
         });
       });
     });
-
-    // Glide effect:
+    // Glide effect
     const speeds = [1.17, 0.71, 0.33];
     function glideTrack(trackId, speed) {
       const track = document.getElementById(trackId);
