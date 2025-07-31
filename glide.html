@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>Hammer App – Unlock Your Steam Library!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS STARTS HERE -->
   <style>
     body {
       background: #16171A;
@@ -13,18 +15,14 @@
       padding: 0;
     }
     .main {
-      max-width: 700px; margin: 40px auto 20px auto; padding: 30px 18px 16px 18px;
+      max-width: 700px; margin: 40px auto 24px auto; padding: 30px 18px 14px 18px;
       background: #23242bdd; border-radius: 14px; box-shadow: 0 4px 24px #0007;
     }
-    h1 {
-      font-size: 2.1rem; margin-bottom: 10px; color: #ffae1a; font-weight: bold; text-shadow: 0 2px 6px #0005;
-    }
-    h2 { font-size: 1.22rem; color: #f05e16; margin: 10px 0 14px 0; }
-    .features { font-size: 1.08rem; margin: 12px 0 10px 0; padding-left: 15px; }
+    h1 { font-size: 2.1rem; margin-bottom: 10px; color: #ffae1a; font-weight: bold; text-shadow: 0 2px 6px #0005;}
+    h2 { font-size: 1.25rem; color: #f05e16; margin: 16px 0 12px 0; }
+    .features { font-size: 1.08rem; margin: 12px 0 18px 0; padding-left: 15px; }
     .features li { margin: 10px 0; line-height: 1.45; list-style: "🔥 "; }
-    .cta {
-      display: block; text-align: center; margin: 20px 0 10px 0;
-    }
+    .cta { display: block; text-align: center; margin: 20px 0 12px 0;}
     .cta-btn {
       font-size: 1.1rem;
       background: linear-gradient(90deg, #f1ac3c 20%, #ff583c 90%);
@@ -33,7 +31,7 @@
       box-shadow: 0 2px 15px #0005; transition: opacity 0.19s;
     }
     .cta-btn:hover { opacity: 0.86;}
-    .price { font-size: 1.1rem; color: #ffd15c; margin-top: 6px; }
+    .price { font-size: 1.06rem; color: #ffd15c; margin-top: 8px; }
     .video-wrap {
       margin: 25px auto 16px auto; max-width: 560px; width: 100%;
       border-radius: 10px; overflow: hidden; box-shadow: 0 1.5px 10px #000a;
@@ -45,10 +43,43 @@
       width: 100%; height: 100%; border: none;
       display: block;
     }
-    /* Glider section */
+
+    /* FAQ + Pros/Cons style */
+    .faq-section {
+      max-width: 600px; margin: 40px auto 0 auto; border-radius:12px; background: #212227ee;
+      box-shadow: 0 2px 16px #0005; padding: 20px 15px; 
+    }
+    .faq-title { color: #ffaa44; font-size: 1.14rem; margin:0 0 14px 0; padding-left:8px;}
+    .faq-list { }
+    .faq-item { margin-bottom:12px;}
+    .faq-q {
+      width: 100%; text-align:left; background: #26282f;
+      color: #ffe0a0; font-size: 1.07rem; border:none; outline:none; padding:12px;
+      border-radius:8px; cursor:pointer; font-weight: 500; letter-spacing:0.1px;
+      transition: background 0.16s;
+      box-shadow: 0 0.5px 2px #0003;
+    }
+    .faq-q:hover { background: #343750;}
+    .faq-a {
+      max-height: 0; overflow: hidden; opacity: 0;
+      transition: max-height 0.44s cubic-bezier(.5,1.4,.7,1.01), opacity 0.27s linear;
+      background: #272831e5; color:#eae5d8; border-radius: 0 0 9px 9px;
+      margin-top:0; padding:0 18px;
+      box-shadow: 0 1.5px 6px #0002 inset;
+      transform: translateY(-8px);
+    }
+    .faq-item.show .faq-a {
+      max-height: 350px; opacity: 1; margin-top:4px; padding:14px 18px 14px 18px; 
+      transform: none;
+    }
+    .pros { color:#baffca; font-size:1rem;}
+    .cons { color:#ff9c9c; font-size:1rem;}
+    .pros li, .cons li {margin-bottom: 7px;}
+
+    /* Glider/slider styles */
     .glide-row {
       position: relative; width: 100vw; max-width: 880px; height: 110px;
-      margin: 30px auto 0 auto; overflow: hidden;
+      margin: 35px auto 0 auto; overflow: hidden;
       background: #161920; border-radius: 10px; box-shadow: 0 2px 12px #0009;
     }
     .glide-track {
@@ -58,16 +89,17 @@
       height: 94px; margin: 0 12px; border-radius: 8px; box-shadow: 0 1.5px 8px #0007; opacity: 0.96; background: #25282c;
     }
     @media (max-width: 800px) {
-      .main { max-width: 99vw; padding: 18px 5vw 10vw 5vw;}
+      .main, .faq-section { max-width: 99vw; padding-left: 4vw; padding-right: 4vw;}
       .glide-row {max-width: 99vw; height: 68px;}
       .glide-img {height: 58px;}
     }
     @media screen and (max-width: 500px) {
       h1 {font-size: 1.3rem;}
       h2 {font-size: 1.01rem;}
-      .main {padding: 8vw 4vw 7vw 4vw;}
     }
   </style>
+  <!-- CSS ENDS HERE -->
+
 </head>
 <body>
   <div class="main">
@@ -82,7 +114,7 @@
       <li><b>Revive Classics:</b> Restore lost games with just one click.</li>
       <li><b>Multi-Platform Support:</b> Windows, Steam Deck, ROG Ally, MSI Claw, Legion Go, and more.</li>
       <li><b>Android Companion App:</b> Add games directly from your Android phone for ultimate convenience.</li>
-      <li><b>Upcoming Chrome Extension:</b> Easily add games with "Add Game" button on Steam store!</li>
+      <li><b>Upcoming Chrome Extension:</b> Easily add games with a simple "Add Game" button straight from the Steam store!</li>
       <li><b>Easy Access:</b> No account setup needed—perfect for all gamers!</li>
     </ul>
     <div class="cta">
@@ -97,6 +129,85 @@
     <!-- Video Player -->
     <div class="video-wrap">
       <iframe src="https://streamable.com/e/i3nad1" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- FAQ Section -->
+  <div class="faq-section">
+    <h2 class="faq-title">❓ Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">Is Hammer App safe and legal?</button>
+        <div class="faq-a">
+          Absolutely! Hammer downloads directly from Valve’s servers using your Steam credentials. There’s no piracy, no server spoofing, and your login info never goes to us!
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Will my Steam achievements and saves work?</button>
+        <div class="faq-a">
+          Yes—Hammer fully supports Steam Cloud and achievements. Everything stays synced and up-to-date.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can I use Hammer App anywhere?</button>
+        <div class="faq-a">
+          Yes, there are no region locks! Play and restore games worldwide.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What platforms are supported?</button>
+        <div class="faq-a">
+          Hammer runs on Windows, Steam Deck, ROG Ally, MSI Claw, Legion Go, and more. There’s also an Android companion app.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do I need a subscription?</button>
+        <div class="faq-a">
+          No subscription needed! Just a one-time payment of PHP 699 or \$13.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can I add games while on mobile?</button>
+        <div class="faq-a">
+          Yes! The Android app lets you add games on the go, and the upcoming Chrome extension will let you add games in 1 click from the Steam store.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pros and Cons Section -->
+  <div class="faq-section" style="margin-top:36px;">
+    <h2 class="faq-title">✨ Pros & Cons</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">Show Pros</button>
+        <div class="faq-a">
+          <ul class="pros">
+            <li>✔️ Huge library (75,000+ games, including delisted gems)</li>
+            <li>✔️ No region locks, play anywhere</li>
+            <li>✔️ Fast downloads via Valve's servers</li>
+            <li>✔️ Always up to date with 1 click</li>
+            <li>✔️ Steam Cloud support (saves & achievements stay intact)</li>
+            <li>✔️ Revives classics and lost titles</li>
+            <li>✔️ Multi-platform (Windows, Steam Deck, ROG Ally, etc.)</li>
+            <li>✔️ Mobile companion app + upcoming Chrome extension</li>
+            <li>✔️ Easy, no account needed</li>
+            <li>✔️ One-time price, no subscriptions</li>
+          </ul>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Show Cons</button>
+        <div class="faq-a">
+          <ul class="cons">
+            <li>❌ Windows/Linux required for main app</li>
+            <li>❌ No Mac/iOS version (yet)</li>
+            <li>❌ You need your own Steam account with licenses</li>
+            <li>❌ Some DRM-protected games may have extra steps to restore</li>
+            <li>❌ Delisted games availability depends on your Steam ownership</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -120,8 +231,21 @@
     </div>
   </div>
 
+  <!-- JS for collapsible FAQ/Pros/Cons and slider -->
   <script>
-    // Set different speeds (pixels per frame)
+    // Collapsible FAQ/Pros/Cons logic with elegant transition
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const item = this.parentElement;
+        item.classList.toggle('show');
+        // Optional: close siblings
+        document.querySelectorAll('.faq-item').forEach(other => {
+          if (other !== item) other.classList.remove('show');
+        });
+      });
+    });
+
+    // Glide effect
     const speeds = [1.17, 0.71, 0.33];
     function glideTrack(trackId, speed) {
       const track = document.getElementById(trackId);
