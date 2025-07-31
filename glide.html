@@ -8,16 +8,15 @@
     html, body { height:100%; margin:0; padding:0; box-sizing: border-box; font-family:'Segoe UI', Arial,sans-serif; background:#16171A; }
     body { color:#EAEAEA; }
 
-    /* HERO SCROLL ZOOM VIDEO */
     #triple-hero-bg {
       position:fixed; left:0; top:0; width:100vw; height:100vh; z-index: 0;
       overflow:hidden; background:#000;
       display:flex; align-items:center; justify-content:center;
+      pointer-events: none;
     }
     .triple-vid-bg {
       position:absolute; top:0; left:0; width:100vw; height:100vh;
       display:flex; justify-content:center; align-items:center;
-      pointer-events: none;
       will-change:transform;
       transition: filter .7s, transform 1.3s cubic-bezier(.7,0,.2,1);
     }
@@ -27,6 +26,7 @@
       height:70vh; min-height:120px; max-height:90vh;
       opacity:.21; transition:opacity .7s, box-shadow .7s;
       margin: 0 1vw;
+      pointer-events:none !important;
     }
     .center-vid {z-index:2; opacity:1;}
     .hero-overlay, .hero-ad-bottom {
@@ -38,6 +38,15 @@
     }
     .hero-overlay {top:21vh; font-size:2.3rem;}
     .hero-ad-bottom {bottom:9vh; color:#ffae1a; font-size:1.38rem; opacity:0;}
+    .down-arrow {
+      position: absolute; left: 50%; bottom: 2vh; width: 40px; margin-left: -20px; z-index:10; opacity: .7;
+      animation: arrow-bounce 1.7s infinite;
+      pointer-events:none;
+    }
+    @keyframes arrow-bounce {
+      0%,100% { transform: translateY(0);}
+      50% { transform: translateY(22px);}
+    }
 
     /* ZOOM/SCROLL states */
     .scrolled-hero .triple-vid-bg { transform: scale(1.00) translateY(0);}
@@ -111,6 +120,7 @@
     </div>
     <div class="hero-overlay" id="mainAd">Hammer Steam Library Adder<br><span style="font-size:1.3rem;font-weight:400;">Unlock and unleash your Steam</span></div>
     <div class="hero-ad-bottom" id="lowerAd">Massive <b>75,000 games</b> and titles in your arsenal</div>
+    <svg class="down-arrow" viewBox="0 0 24 24" fill="none"><path d="M12 20V4M12 20l7-7m-7 7l-7-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
   <!-- MAIN CONTENT -->
   <div class="main">
