@@ -2,18 +2,86 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Game Covers Glide Animation</title>
+  <title>Hammer App – Unlock Your Entire Steam Library!</title>
+  <meta name="viewport" content="width=900">
   <style>
-    body { background: #181818; color: #eee; }
+    body {
+      background: #16171A;
+      color: #EAEAEA;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .main {
+      max-width: 700px;
+      margin: 40px auto 20px auto;
+      padding: 30px 24px 16px 24px;
+      background: #23242bdd;
+      border-radius: 14px;
+      box-shadow: 0 4px 24px #0007;
+    }
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 14px;
+      color: #ffae1a;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 8px #0005;
+    }
+    h2 {
+      font-size: 1.5rem;
+      color: #f05e16;
+      margin-top: 16px;
+      letter-spacing: 0.2px;
+    }
+    .features {
+      font-size: 1.12rem;
+      margin: 22px 0 18px 0;
+      padding-left: 18px;
+    }
+    .features li {
+      margin: 10px 0;
+      line-height: 1.5;
+      list-style: "🔥 ";
+    }
+    .cta {
+      display: block;
+      text-align: center;
+      margin: 26px 0 15px 0;
+    }
+    .cta-btn {
+      font-size: 1.2rem;
+      background: linear-gradient(90deg, #f1ac3c 20%, #ff583c 90%);
+      color: #222;
+      border: none;
+      border-radius: 8px;
+      padding: 16px 48px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 14px;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 18px #0004;
+      transition: opacity 0.18s;
+    }
+    .cta-btn:hover {
+      opacity: 0.87;
+    }
+    .price {
+      font-size: 1.14rem;
+      color: #ffd15c;
+      margin-top: 8px;
+    }
+    /* Glider section */
     .glide-row {
       position: relative;
-      width: 90vw;
+      width: 100vw;
+      max-width: 880px;
       height: 140px;
-      margin: 40px auto;
+      margin: 38px auto 0 auto;
       overflow: hidden;
-      background: #2a2a2a;
-      border-radius: 8px;
-      box-shadow: 0 3px 15px #0007;
+      background: #161920;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px #0009;
     }
     .glide-track {
       position: absolute;
@@ -23,46 +91,79 @@
       height: 100%;
       display: flex;
       align-items: center;
+      will-change: transform;
     }
     .glide-img {
       height: 120px;
       margin: 0 16px;
-      border-radius: 6px;
-      box-shadow: 0 1px 6px #0006;
+      border-radius: 7px;
+      box-shadow: 0 1.5px 9px #0007;
+      opacity: 0.94;
+      background: #25282c;
+    }
+    @media (max-width: 800px) {
+      .main {max-width: 98vw;}
+      .glide-row {max-width: 98vw;}
+      .glide-img {height: 88px;}
     }
   </style>
 </head>
 <body>
-  <h2 style="text-align:center;margin-bottom:0;">Game Covers Glide</h2>
+  <div class="main">
+    <h1>🚀🔥 Hammer App</h1>
+    <h2>Unlock Your Entire Steam Library in One Click!</h2>
+    <ul class="features">
+      <li><b>Huge Library:</b> 75,000+ games—from new hits to classic delisted gems.</li>
+      <li><b>No Region Locks:</b> Play anywhere in the world, hassle-free!</li>
+      <li><b>Fast Downloads:</b> Blazing speeds straight from Valve’s secure servers.</li>
+      <li><b>Always Updated:</b> Tap “Update GAME” to get the latest build instantly.</li>
+      <li><b>Cloud Saves:</b> Keep your saves and achievements 100% intact.</li>
+      <li><b>Revive Classics:</b> Restore lost games with just one click.</li>
+      <li><b>Multi-Platform Support:</b> Works seamlessly on Windows, Steam Deck, ROG Ally, MSI Claw, Legion Go, and more.</li>
+      <li><b>Android Companion App:</b> Add games directly from your Android phone for ultimate convenience.</li>
+      <li><b>Upcoming Chrome Extension:</b> Easily add games with a simple "Add Game" button straight from the Steam store!</li>
+      <li><b>Easy Access:</b> No account setup needed—perfect for all gamers!</li>
+    </ul>
+    <div class="cta">
+      <a href="https://hammerwebsite12.github.io/hammersteam/" target="_blank">
+        <button class="cta-btn">Get Hammer App Now!</button>
+      </a>
+      <div class="price"><b>Just PHP 699 / \$13!</b></div>
+      <div style="font-size:1.04rem; margin-top:6px; color:#aaffbc;">
+        No more waiting, no more limits!
+      </div>
+    </div>
+  </div>
+
+  <!-- Gliding Game Gallery (bottom) -->
   <div class="glide-row" style="height: 140px;">
     <div class="glide-track" id="track1">
-      <img src="1st.jpg" class="glide-img">
-      <img src="1st.jpg" class="glide-img">
+      <img src="1st.jpg" class="glide-img" alt="Collage">
+      <img src="1st.jpg" class="glide-img" alt="Collage">
     </div>
   </div>
   <div class="glide-row" style="height: 140px;">
     <div class="glide-track" id="track2">
-      <img src="2nd.jpg" class="glide-img">
-      <img src="2nd.jpg" class="glide-img">
+      <img src="2nd.jpg" class="glide-img" alt="Strip">
+      <img src="2nd.jpg" class="glide-img" alt="Strip">
     </div>
   </div>
   <div class="glide-row" style="height: 140px;">
     <div class="glide-track" id="track3">
-      <img src="2025-07-31 13_27_07-GeForce NOW _ The Next Generation in Cloud Gaming _ NVIDIA.png" class="glide-img">
-      <img src="2025-07-31 13_27_07-GeForce NOW _ The Next Generation in Cloud Gaming _ NVIDIA.png" class="glide-img">
+      <img src="2025-07-31 13_27_07-GeForce NOW _ The Next Generation in Cloud Gaming _ NVIDIA.png" class="glide-img" alt="Promo">
+      <img src="2025-07-31 13_27_07-GeForce NOW _ The Next Generation in Cloud Gaming _ NVIDIA.png" class="glide-img" alt="Promo">
     </div>
   </div>
 
   <script>
-    // Set different speeds for each row (pixels per frame)
-    const speeds = [1.3, 0.85, 0.4]; // slow, slower, slowest
+    // Set different speeds (pixels per frame)
+    const speeds = [1.18, 0.73, 0.42];
 
-    // For each row, animate the track to move left, loop seamlessly
+    // Helper for each track's animation
     function glideTrack(trackId, speed) {
       const track = document.getElementById(trackId);
       const imgs = track.getElementsByTagName('img');
       let x = 0;
-      // each image width, assume all images in row are identical
       function animate() {
         x -= speed;
         const imgWidth = imgs[0].offsetWidth + 32; // img + margin
@@ -73,7 +174,7 @@
       animate();
     }
 
-    // Start animation, after all images render
+    // Start after all images are loaded
     window.onload = () => {
       glideTrack('track1', speeds[0]);
       glideTrack('track2', speeds[1]);
