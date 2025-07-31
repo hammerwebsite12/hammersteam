@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gliding Game Covers</title>
+  <style>
+    body { background: #111; color: #fff; font-family: sans-serif; }
+    .glide-container {
+      position: relative;
+      width: 80vw;
+      height: 300px;
+      margin: 40px auto;
+      overflow: hidden;
+      background: #222;
+      border-radius: 8px;
+    }
+    .gliding-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: auto;
+      will-change: transform;
+      opacity: 0.96;
+      border-radius: 6px;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align:center;">Game Covers Gliding Animation</h1>
+  <div class="glide-container">
+    <img src="1st.jpg" class="gliding-image" id="img1" alt="Collage">
+    <img src="2nd.jpg" class="gliding-image" id="img2" alt="Strip">
+    <img src="2025-07-31 13_27_07-GeForce NOW _ The Next Generation in Cloud Gaming _ NVIDIA.png" class="gliding-image" id="img3" alt="Promo">
+  </div>
+
+  <script>
+    // Gliding speeds
+    const speeds = [
+      0.25,    // slow (img1)
+      0.15,    // slower (img2)
+      0.07     // slowest (img3)
+    ];
+
+    // Initial X positions
+    let positions = [0, 0, 0];
+
+    // Image elements
+    const imgs = [
+      document.getElementById('img1'),
+      document.getElementById('img2'),
+      document.getElementById('img3')
+    ];
+
+    function glide() {
+      imgs.forEach((img, i) => {
+        positions[i] -= speeds[i];
+        // If the image has moved fully left, reset it to right edge
+        if(img.width && Math.abs(positions[i]) > img.width)
+          positions[i] = imgs[0].parentElement.offsetWidth;
+        img.style.transform = `translateX(${positions[i]}px)`;
+      });
+      requestAnimationFrame(glide);
+    }
+
+    // Wait until images are loaded for proper width
+    let loaded = 0;
+    imgs.forEach(img => {
+      img.onload = () => {
+        loaded++;
+        if(loaded === imgs.length) glide();
+      };
+      // In case images are cached and already loaded
+      if (img.complete) {
+        loaded++;
+        if(loaded === imgs.length) glide();
+      }
+    });
+  </script>
+</body>
+</html>
