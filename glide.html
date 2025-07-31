@@ -5,146 +5,125 @@
   <title>Hammer App – Unlock Your Steam Library!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    html, body { height:100%; margin:0; padding:0; box-sizing: border-box; font-family:'Segoe UI', Arial,sans-serif; background:#16171A; }
-    body { color:#EAEAEA; }
-
+    html,body{height:100%;margin:0;padding:0;font-family:'Segoe UI',Arial,sans-serif;background:#16171A;}
+    body{color:#EAEAEA;}
+    /* --- TRIPLE HERO VIDEO --- */
     #triple-hero-bg {
-      position:fixed; left:0; top:0; width:100vw; height:100vh; z-index: 0;
-      overflow:hidden; background:#000;
-      display:flex; align-items:center; justify-content:center;
-      pointer-events: none;
+      position:fixed; left:0; top:0; width:100vw; height:100vh; z-index:0; background:#000;
+      pointer-events:none;
+      overflow:hidden; display:flex; align-items:center; justify-content:center;
     }
     .triple-vid-bg {
-      position:absolute; top:0; left:0; width:100vw; height:100vh;
-      display:flex; justify-content:center; align-items:center;
-      will-change:transform;
-      transition: filter .7s, transform 1.3s cubic-bezier(.7,0,.2,1);
+      position:absolute;top:0;left:0;width:100vw;height:100vh;
+      display:flex;justify-content:center;align-items:center;will-change:transform;
+      transition:filter .7s,transform 1.3s cubic-bezier(.7,0,.2,1);
     }
     .hero-vid {
-      object-fit:cover; border-radius:2vw; box-shadow:0 6px 36px #0008;
-      width:33.34vw; min-width:320px; max-width:600px; aspect-ratio:16/9;
-      height:70vh; min-height:120px; max-height:90vh;
-      opacity:.21; transition:opacity .7s, box-shadow .7s;
-      margin: 0 1vw;
-      pointer-events:none !important;
+      object-fit:cover;border-radius:2vw;box-shadow:0 6px 36px #0008;
+      width:33.34vw;min-width:320px;max-width:600px;aspect-ratio:16/9;
+      height:70vh;min-height:120px;max-height:90vh;opacity:.21;
+      transition:opacity .7s,box-shadow .7s;margin:0 1vw;pointer-events:none!important;
     }
-    .center-vid {z-index:2; opacity:1;}
-    .hero-overlay, .hero-ad-bottom {
-      position:absolute; width:100vw; left:0; text-align:center; z-index:3;
-      font-weight:bold; letter-spacing:.01em; pointer-events:none; user-select:none;
-      text-shadow:0 4px 32px #000a, 0 1px 8px #222b;
-      transition: opacity 0.82s, top 1s, bottom 1s, font-size .8s;
-      color:#fff;
+    .center-vid {z-index:2;opacity:1;}
+    .hero-overlay,.hero-ad-bottom{
+      position:absolute;width:100vw;left:0;text-align:center;z-index:3;
+      font-weight:bold;letter-spacing:.01em;pointer-events:none;user-select:none;
+      text-shadow:0 4px 32px #000a,0 1px 8px #222b;
+      transition:opacity .82s,top 1s,bottom 1s,font-size .8s;color:#fff;
     }
-    .hero-overlay {top:21vh; font-size:2.3rem;}
-    .hero-ad-bottom {bottom:9vh; color:#ffae1a; font-size:1.38rem; opacity:0;}
-    .down-arrow {
-      position: absolute; left: 50%; bottom: 2vh; width: 40px; margin-left: -20px; z-index:10; opacity: .7;
-      animation: arrow-bounce 1.7s infinite;
-      pointer-events:none;
-    }
-    @keyframes arrow-bounce {
-      0%,100% { transform: translateY(0);}
-      50% { transform: translateY(22px);}
-    }
+    .hero-overlay{top:21vh;font-size:2.3rem;}
+    .hero-ad-bottom{bottom:9vh;color:#ffae1a;font-size:1.38rem;opacity:0;}
+    .down-arrow{position:absolute;left:50%;bottom:2vh;width:40px;margin-left:-20px;z-index:10;opacity:.7;animation:arrow-bounce 1.7s infinite;pointer-events:none;}
+    @keyframes arrow-bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(22px);}}
 
-    /* ZOOM/SCROLL states */
-    .scrolled-hero .triple-vid-bg { transform: scale(1.00) translateY(0);}
-    .zoom-hero .triple-vid-bg { transform: scale(2.3) translateY(0);}
-    .zoom-hero .hero-vid { opacity:.08; box-shadow:0 0 0 transparent;}
-    .zoom-hero .center-vid { opacity:1; box-shadow:0 12px 44px #000c;}
-    .zoom-hero .hero-overlay {opacity:1;}
-    .zoom-hero .hero-ad-bottom {opacity:0;}
-    .scrolled-hero .hero-overlay {opacity:0;}
-    .scrolled-hero .hero-ad-bottom {opacity:1;}
-    .triple-vid-bg { transition: transform 1.33s cubic-bezier(.7,0,.2,1), filter .82s;}
-    .scrolled-hero .hero-vid, .zoom-hero .hero-vid { transition:opacity 1.3s, box-shadow 1.1s;}
-    @media (max-width:900px) {
-      .hero-vid {min-width:120px; min-height:60px; width:99vw; height:25vh; border-radius:4vw;}
-      .hero-overlay {font-size:1.17rem; top:10vh;}
-      .hero-ad-bottom {font-size:.98rem;}
+    .scrolled-hero .triple-vid-bg{transform:scale(1) translateY(0);}
+    .zoom-hero .triple-vid-bg{transform:scale(2.3) translateY(0);}
+    .zoom-hero .hero-vid{opacity:.08;box-shadow:0 0 0 transparent;}
+    .zoom-hero .center-vid{opacity:1;box-shadow:0 12px 44px #000c;}
+    .zoom-hero .hero-overlay{opacity:1;}
+    .zoom-hero .hero-ad-bottom{opacity:0;}
+    .scrolled-hero .hero-overlay{opacity:0;}
+    .scrolled-hero .hero-ad-bottom{opacity:1;}
+    .triple-vid-bg{transition:transform 1.33s cubic-bezier(.7,0,.2,1),filter .82s;}
+    .scrolled-hero .hero-vid,.zoom-hero .hero-vid{transition:opacity 1.3s,box-shadow 1.1s;}
+    @media (max-width:900px){.hero-vid{min-width:120px;min-height:60px;width:99vw;height:25vh;border-radius:4vw;}
+      .hero-overlay{font-size:1.17rem;top:10vh;}
+      .hero-ad-bottom{font-size:.98rem;}
     }
     @media (max-width:600px){
-      .hero-vid {min-width:90px; width:98vw; height:13vh;}
-      .hero-overlay {font-size:1.01rem;}
-      .hero-ad-bottom {font-size:.97rem;}
+      .hero-vid{min-width:90px;width:98vw;height:13vh;}
+      .hero-overlay{font-size:1.01rem;}
+      .hero-ad-bottom{font-size:.97rem;}
     }
-
-    /* Main page */
-    .main {max-width:700px; margin:0 auto 32px auto; padding:46px 18px 14px 18px; background:#23242bdd; border-radius:14px; box-shadow:0 4px 24px #0007; position:relative; z-index:2; margin-top:110vh;}
-    h1 { font-size: 2.1rem; margin-bottom: 10px; color: #ffae1a; font-weight: bold; text-shadow: 0 2px 6px #0005;}
-    h2 { font-size: 1.25rem; color: #f05e16; margin: 16px 0 12px 0; }
-    .features { font-size: 1.08rem; margin: 12px 0 18px 0; padding-left: 15px; }
-    .features li { margin: 10px 0; line-height: 1.45; list-style: "🔥 "; }
-    .cta { display: block; text-align: center; margin: 20px 0 12px 0;}
-    .cta-btn { font-size: 1.1rem; background: linear-gradient(90deg, #f1ac3c 20%, #ff583c 90%); color: #222; border: none; border-radius: 8px; padding: 13px 32px; font-weight: bold; cursor: pointer; margin-top: 10px; letter-spacing: 0.5px; box-shadow: 0 2px 15px #0005; transition: opacity 0.19s;}
-    .cta-btn:hover { opacity: 0.86;}
-    .price { font-size: 1.06rem; color: #ffd15c; margin-top: 8px; }
-    .video-wrap { margin: 25px auto 16px auto; max-width: 560px; width: 100%; border-radius: 10px; overflow: hidden; box-shadow: 0 1.5px 10px #000a; background: #23242bdd; aspect-ratio: 16/9; position: relative;}
-    .video-wrap iframe { width: 100%; height: 100%; border: none; display: block;}
-
-    /* FAQ + Pros/Cons styles: collapsible */
-    .faq-section { max-width: 600px; margin: 40px auto 0 auto; border-radius:12px; background: #212227ee; box-shadow: 0 2px 16px #0005; padding: 20px 15px; }
-    .faq-title { color: #ffaa44; font-size: 1.14rem; margin:0 0 14px 0; padding-left:8px;}
-    .faq-list { }
-    .faq-item { margin-bottom:12px;}
-    .faq-q {
-      width: 100%; text-align:left; background: #26282f; color: #ffe0a0; font-size: 1.07rem; border:none; outline:none; padding:12px; border-radius:8px; cursor:pointer; font-weight: 500; letter-spacing:0.1px; transition: background 0.16s; box-shadow: 0 0.5px 2px #0003;
-    }
-    .faq-q:hover { background: #343750;}
-    .faq-a {
-      max-height: 0; overflow: hidden; opacity: 0;
-      transition: max-height 0.44s cubic-bezier(.5,1.4,.7,1.01), opacity 0.27s linear;
-      background: #272831e5; color:#eae5d8; border-radius: 0 0 9px 9px;
-      margin-top:0; padding:0 18px; box-shadow: 0 1.5px 6px #0002 inset; transform: translateY(-8px);
-    }
-    .faq-item.show .faq-a { max-height: 350px; opacity: 1; margin-top:4px; padding:14px 18px 14px 18px; transform: none;}
-    .pros { color:#baffca; font-size:1rem;}
-    .cons { color:#ff9c9c; font-size:1rem;}
-    .pros li, .cons li {margin-bottom: 7px;}
-    /* Glide rows */
-    .glide-row {position: relative; width: 100vw; max-width: 880px; height: 110px; margin: 35px auto 0 auto; overflow: hidden; background: #161920; border-radius: 10px; box-shadow: 0 2px 12px #0009;}
-    .glide-track {position: absolute; white-space: nowrap; left: 0; top: 0; height: 100%; display: flex; align-items: center; will-change: transform;}
-    .glide-img {height: 94px; margin: 0 12px; border-radius: 8px; box-shadow: 0 1.5px 8px #0007; opacity: 0.96; background: #25282c;}
-    @media (max-width: 800px) { .main, .faq-section { max-width: 99vw; padding-left: 4vw; padding-right: 4vw;} .glide-row {max-width: 99vw; height: 68px;} .glide-img {height: 58px;} }
-    @media screen and (max-width: 500px) { h1 {font-size: 1.3rem;} h2 {font-size: 1.01rem;} }
+    /* --- MAIN CONTENT --- */
+    .main {max-width:700px;margin:0 auto 32px auto;padding:46px 18px 14px 18px;background:#23242bdd;border-radius:14px;box-shadow:0 4px 24px #0007;position:relative;z-index:2;margin-top:110vh;}
+    h1{font-size:2.1rem;margin-bottom:10px;color:#ffae1a;font-weight:bold;text-shadow:0 2px 6px #0005;}
+    h2{font-size:1.25rem;color:#f05e16;margin:16px 0 12px 0;}
+    .features{font-size:1.08rem;margin:12px 0 18px 0;padding-left:15px;}
+    .features li{margin:10px 0;line-height:1.45;list-style:"🔥 ";}
+    .cta{display:block;text-align:center;margin:20px 0 12px 0;}
+    .cta-btn{font-size:1.1rem;background:linear-gradient(90deg,#f1ac3c 20%,#ff583c 90%);color:#222;border:none;border-radius:8px;padding:13px 32px;font-weight:bold;cursor:pointer;margin-top:10px;letter-spacing:.5px;box-shadow:0 2px 15px #0005;transition:opacity 0.19s;}
+    .cta-btn:hover{opacity:.86;}
+    .price{font-size:1.06rem;color:#ffd15c;margin-top:8px;}
+    .video-wrap{margin:25px auto 16px auto;max-width:560px;width:100%;border-radius:10px;overflow:hidden;box-shadow:0 1.5px 10px #000a;background:#23242bdd;aspect-ratio:16/9;position:relative;}
+    .video-wrap iframe{width:100%;height:100%;border:none;display:block;}
+    /* FAQ + Pros/Cons style: collapsible */
+    .faq-section{max-width:600px;margin:40px auto 0 auto;border-radius:12px;background:#212227ee;box-shadow:0 2px 16px #0005;padding:20px 15px;}
+    .faq-title{color:#ffaa44;font-size:1.14rem;margin:0 0 14px 0;padding-left:8px;}
+    .faq-list{}
+    .faq-item{margin-bottom:12px;}
+    .faq-q{width:100%;text-align:left;background:#26282f;color:#ffe0a0;font-size:1.07rem;border:none;outline:none;padding:12px;border-radius:8px;cursor:pointer;font-weight:500;letter-spacing:.1px;transition:background .16s;box-shadow:0 .5px 2px #0003;}
+    .faq-q:hover{background:#343750;}
+    .faq-a{max-height:0;overflow:hidden;opacity:0;transition:max-height .44s cubic-bezier(.5,1.4,.7,1.01),opacity .27s linear;background:#272831e5;color:#eae5d8;border-radius:0 0 9px 9px;margin-top:0;padding:0 18px;box-shadow:0 1.5px 6px #0002 inset;transform:translateY(-8px);}
+    .faq-item.show .faq-a{max-height:350px;opacity:1;margin-top:4px;padding:14px 18px 14px 18px;transform:none;}
+    .pros{color:#baffca;font-size:1rem;}
+    .cons{color:#ff9c9c;font-size:1rem;}
+    .pros li,.cons li{margin-bottom:7px;}
+    .glide-row{position:relative;width:100vw;max-width:880px;height:110px;margin:35px auto 0 auto;overflow:hidden;background:#161920;border-radius:10px;box-shadow:0 2px 12px #0009;}
+    .glide-track{position:absolute;white-space:nowrap;left:0;top:0;height:100%;display:flex;align-items:center;will-change:transform;}
+    .glide-img{height:94px;margin:0 12px;border-radius:8px;box-shadow:0 1.5px 8px #0007;opacity:.96;background:#25282c;}
+    @media(max-width:800px){.main,.faq-section{max-width:99vw;padding-left:4vw;padding-right:4vw;}.glide-row{max-width:99vw;height:68px;}.glide-img{height:58px;}}
+    @media screen and (max-width:500px) {h1{font-size:1.3rem;}h2{font-size:1.01rem;}}
   </style>
 </head>
 <body>
-  <!-- TRIPLE HERO VIDEO -->
-  <div id="triple-hero-bg" class="zoom-hero">
-    <div class="triple-vid-bg" id="tripleVidBg">
-      <video class="hero-vid left-vid" src="bg1.mp4" autoplay muted loop playsinline></video>
-      <video class="hero-vid center-vid" src="bg2.mp4" autoplay muted loop playsinline></video>
-      <video class="hero-vid right-vid" src="bg3.mp4" autoplay muted loop playsinline></video>
-    </div>
-    <div class="hero-overlay" id="mainAd">Hammer Steam Library Adder<br><span style="font-size:1.3rem;font-weight:400;">Unlock and unleash your Steam</span></div>
-    <div class="hero-ad-bottom" id="lowerAd">Massive <b>75,000 games</b> and titles in your arsenal</div>
-    <svg class="down-arrow" viewBox="0 0 24 24" fill="none"><path d="M12 20V4M12 20l7-7m-7 7l-7-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<!-- TRIPLE HERO VIDEO -->
+<div id="triple-hero-bg" class="zoom-hero">
+  <div class="triple-vid-bg" id="tripleVidBg">
+    <video class="hero-vid left-vid" src="bg1.mp4" autoplay muted loop playsinline></video>
+    <video class="hero-vid center-vid" src="bg2.mp4" autoplay muted loop playsinline></video>
+    <video class="hero-vid right-vid" src="bg3.mp4" autoplay muted loop playsinline></video>
   </div>
-  <!-- MAIN CONTENT -->
-  <div class="main">
-    <h1>🚀🔥 Hammer App</h1>
-    <h2>Unlock Your Entire Steam Library in One Click!</h2>
-    <ul class="features">
-      <li><b>Huge Library:</b> 75,000+ games—from new hits to classic delisted gems.</li>
-      <li><b>No Region Locks:</b> Play anywhere in the world, hassle-free!</li>
-      <li><b>Fast Downloads:</b> Blazing speeds straight from Valve’s secure servers.</li>
-      <li><b>Always Updated:</b> Tap “Update GAME” to get the latest build instantly.</li>
-      <li><b>Cloud Saves:</b> Keep your saves and achievements 100% intact.</li>
-      <li><b>Revive Classics:</b> Restore lost games with just one click.</li>
-      <li><b>Multi-Platform Support:</b> Windows, Steam Deck, ROG Ally, MSI Claw, Legion Go, and more.</li>
-      <li><b>Android Companion App:</b> Add games directly from your Android phone for ultimate convenience.</li>
-      <li><b>Upcoming Chrome Extension:</b> Easily add games with a simple "Add Game" button straight from the Steam store!</li>
-      <li><b>Easy Access:</b> No account setup needed—perfect for all gamers!</li>
-    </ul>
-    <div class="cta">
-      <a href="https://hammerwebsite12.github.io/hammersteam/" target="_blank"><button class="cta-btn">Get Hammer App Now!</button></a>
-      <div class="price"><b>Just PHP 699 / \$13!</b></div>
-      <div style="font-size:1.04rem; margin-top:6px; color:#aaffbc;">No more waiting, no more limits!</div>
-    </div>
-    <div class="video-wrap"><iframe src="https://streamable.com/e/i3nad1" allowfullscreen></iframe></div>
+  <div class="hero-overlay" id="mainAd">Hammer Steam Library Adder<br>
+    <span style="font-size:1.3rem;font-weight:400;">Unlock and unleash your Steam</span>
   </div>
+  <div class="hero-ad-bottom" id="lowerAd">Massive <b>75,000 games</b> and titles in your arsenal</div>
+  <svg class="down-arrow" viewBox="0 0 24 24" fill="none"><path d="M12 20V4M12 20l7-7m-7 7l-7-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div>
+
+<div class="main">
+  <h1>🚀🔥 Hammer App</h1>
+  <h2>Unlock Your Entire Steam Library in One Click!</h2>
+  <ul class="features">
+    <li><b>Huge Library:</b> 75,000+ games—from new hits to classic delisted gems.</li>
+    <li><b>No Region Locks:</b> Play anywhere in the world, hassle-free!</li>
+    <li><b>Fast Downloads:</b> Blazing speeds straight from Valve’s secure servers.</li>
+    <li><b>Always Updated:</b> Tap “Update GAME” to get the latest build instantly.</li>
+    <li><b>Cloud Saves:</b> Keep your saves and achievements 100% intact.</li>
+    <li><b>Revive Classics:</b> Restore lost games with just one click.</li>
+    <li><b>Multi-Platform Support:</b> Windows, Steam Deck, ROG Ally, MSI Claw, Legion Go, and more.</li>
+    <li><b>Android Companion App:</b> Add games directly from your Android phone for ultimate convenience.</li>
+    <li><b>Upcoming Chrome Extension:</b> Easily add games with a simple "Add Game" button straight from the Steam store!</li>
+    <li><b>Easy Access:</b> No account setup needed—perfect for all gamers!</li>
+  </ul>
+  <div class="cta">
+    <a href="https://hammerwebsite12.github.io/hammersteam/" target="_blank"><button class="cta-btn">Get Hammer App Now!</button></a>
+    <div class="price"><b>Just PHP 699 / \$13!</b></div>
+    <div style="font-size:1.04rem; margin-top:6px; color:#aaffbc;">No more waiting, no more limits!</div>
+  </div>
+  <!-- STREAMABLE VIDEO PLAYER -->
+  <div class="video-wrap"><iframe src="https://streamable.com/e/i3nad1" allowfullscreen></iframe></div>
+
   <!-- FAQ Section - COLLAPSIBLE -->
   <div class="faq-section">
     <h2 class="faq-title">❓ Frequently Asked Questions</h2>
@@ -202,66 +181,54 @@
       </div>
     </div>
   </div>
-  <!-- Gliding Gallery (unchanged from your original) -->
-  <div class="glide-row"><div class="glide-track" id="track1"><img src="1st.jpg" class="glide-img" alt="Collage"><img src="1st.jpg" class="glide-img" alt="Collage"></div></div>
-  <div class="glide-row"><div class="glide-track" id="track2"><img src="2nd.jpg" class="glide-img" alt="Strip"><img src="2nd.jpg" class="glide-img" alt="Strip"></div></div>
-  <div class="glide-row"><div class="glide-track" id="track3"><img src="2025-07-31 13_27_07-GeForce NOW _ The Next Generation in Cloud Gaming _ NVIDIA.png" class="glide-img" alt="Promo"><img src="2025-07-31 13_27_07-GeForce NOW _ The Next Generation in Cloud Gaming _ NVIDIA.png" class="glide-img" alt="Promo"></div></div>
+</div>
 
-  <script>
-    // Triple video random: left/center/right randomly assigned
-    const BG_VIDS = [ "bg1.mp4", "bg2.mp4", "bg3.mp4" ];
-    function shuffle(arr){ for(let i=arr.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]; } }
-    shuffle(BG_VIDS);
-    const vids = document.querySelectorAll('.hero-vid');
-    vids[0].src = BG_VIDS[0];
-    vids[1].src = BG_VIDS[1];
-    vids[2].src = BG_VIDS[2];
+<!-- Gliding Gallery (unchanged from your original) -->
+<div class="glide-row"><div class="glide-track" id="track1"><img src="1st.jpg" class="glide-img" alt="Collage"><img src="1st.jpg" class="glide-img" alt="Collage"></div></div>
+<div class="glide-row"><div class="glide-track" id="track2"><img src="2nd.jpg" class="glide-img" alt="Strip"><img src="2nd.jpg" class="glide-img" alt="Strip"></div></div>
+<div class="glide-row"><div class="glide-track" id="track3"><img src="2025-07-31 13_27_07-GeForce NOW _ The Next Generation in Cloud Gaming _ NVIDIA.png" class="glide-img" alt="Promo"><img src="2025-07-31 13_27_07-GeForce NOW _ The Next Generation in Cloud Gaming _ NVIDIA.png" class="glide-img" alt="Promo"></div></div>
 
-    // ZOOM & SCROLL ANIMATION
-    let zoomedIn = true, lastY = 0;
-    const hero = document.getElementById('triple-hero-bg');
-    function heroZoom(){
-      let y = window.scrollY;
-      let limit = window.innerHeight/1.2; // Adjust for smoothness
-      if(y < limit/2){
-        if(!zoomedIn){ hero.classList.add('zoom-hero'); hero.classList.remove('scrolled-hero'); zoomedIn=true;}
-      }else{
-        if(zoomedIn){ hero.classList.remove('zoom-hero'); hero.classList.add('scrolled-hero'); zoomedIn=false;}
-      }
-    }
-    hero.classList.add('zoom-hero');
-    window.addEventListener('scroll', heroZoom);
+<script>
+  // Triple video random: left/center/right
+  const BG_VIDS=["bg1.mp4","bg2.mp4","bg3.mp4"];
+  function shuffle(arr){for(let i=arr.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}}
+  shuffle(BG_VIDS);
+  const vids=document.querySelectorAll('.hero-vid');
+  vids[0].src=BG_VIDS[0];vids[1].src=BG_VIDS[1];vids[2].src=BG_VIDS[2];
 
-    // Collapsible FAQ/Pros&Cons logic with elegant transition
-    document.querySelectorAll('.faq-q').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const item = this.parentElement;
-        item.classList.toggle('show');
-        document.querySelectorAll('.faq-item').forEach(other => {
-          if (other !== item) other.classList.remove('show');
-        });
+  // ZOOM & SCROLL ANIMATION
+  let zoomedIn=true;
+  const hero=document.getElementById('triple-hero-bg');
+  function heroZoom(){let y=window.scrollY,limit=window.innerHeight/1.2;
+    if(y<limit/2){if(!zoomedIn){hero.classList.add('zoom-hero');hero.classList.remove('scrolled-hero');zoomedIn=true;}}
+    else{if(zoomedIn){hero.classList.remove('zoom-hero');hero.classList.add('scrolled-hero');zoomedIn=false;}}
+  }
+  hero.classList.add('zoom-hero');
+  window.addEventListener('scroll',heroZoom);
+
+  // Collapsible logic FAQ/Pros/Cons
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const item = this.parentElement;
+      item.classList.toggle('show');
+      document.querySelectorAll('.faq-item').forEach(other => {
+        if (other !== item) other.classList.remove('show');
       });
     });
-    // Glide effect
-    const speeds = [1.17, 0.71, 0.33];
-    function glideTrack(trackId, speed) {
-      const track = document.getElementById(trackId);
-      const imgs = track.getElementsByTagName('img');
-      let x = 0;
-      function animate() {
-        x -= speed;
-        const imgWidth = imgs[0].offsetWidth + 24;
-        if (-x >= imgWidth) x += imgWidth;
-        track.style.transform = `translateX(${x}px)`;
-        requestAnimationFrame(animate);
-      }
-      animate();
+  });
+
+  // Glide effect
+  const speeds = [1.17, 0.71, 0.33];
+  function glideTrack(trackId, speed) {
+    const track = document.getElementById(trackId),imgs=track.getElementsByTagName('img');
+    let x = 0;
+    function animate() {
+      x -= speed;const imgWidth = imgs[0].offsetWidth + 24;
+      if(-x>=imgWidth)x+=imgWidth;track.style.transform=`translateX(${x}px)`;requestAnimationFrame(animate);
     }
-    window.onload = () => {
-      glideTrack('track1', speeds[0]);
-      glideTrack('track2', speeds[1]);
-      glideTrack('track3', speeds[2]);
-    };
-  </script>
+    animate();
+  }
+  window.onload=()=>{glideTrack('track1',speeds[0]);glideTrack('track2',speeds[1]);glideTrack('track3',speeds[2]);};
+</script>
 </body>
 </html>
